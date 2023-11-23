@@ -1,0 +1,10 @@
+{
+  "users": [
+    {"id": 1, "name": "SureshGoogle", "email": "sureshkumar.Google@carelon.com", "moduleId": "1"},
+    {"id": 2, "name": "SureshYahoo", "email": "sureshkumar.Yahoo@carelon.com", "moduleId": "2"} 
+  ],
+  "modules":[
+    {"id":1, "name": "google", "route":"www.google.com/"},
+    {"id":2, "name": "yahoo", "route":"www.yahoo.com/"}
+  ]
+}

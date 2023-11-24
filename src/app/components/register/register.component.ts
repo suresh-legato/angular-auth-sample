@@ -6,15 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './register.component.sass',
 })
 export class RegisterComponent implements OnInit {
-  formdata = {
+  formData = {
     name: '',
     email: '',
+    password: '',
   };
   submit = false;
+  errorMessage = '';
+  loading = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  onSubmit() {
+    this.loading = true;
+    console.log(this.formData);
+  }
 }

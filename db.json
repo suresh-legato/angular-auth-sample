@@ -1,7 +1,7 @@
 {
   "users": [
-    {"id": 1, "name": "SureshGoogle", "email": "sureshkumar.Google@carelon.com", "moduleId": "1"},
-    {"id": 2, "name": "SureshYahoo", "email": "sureshkumar.Yahoo@carelon.com", "moduleId": "2"} 
+    {"id": 1, "name": "SureshGoogle", "email": "sureshkumar.Google@carelon.com", "password": "12345678", "moduleId": "1"},
+    {"id": 2, "name": "SureshYahoo", "email": "sureshkumar.Yahoo@carelon.com", "password": "12345678", "moduleId": "2"} 
   ],
   "modules":[
     {"id":1, "name": "google", "route":"www.google.com/"},

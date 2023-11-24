@@ -4,20 +4,21 @@
     <div class="row ">
       <div class="col register-sec">
         <h2 class="text-center">Register Now</h2>
-        <form class="register-form" action="" novalidate>
+        <form class="register-form" action="" #f="ngForm" novalidate (ngSubmit)="f.form.valid && onSubmit()">
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Name</label>
-
-            <input type="text" class="form-control" name="name" id="" required>
-            <span class="text-danger">
+            <input type="text" class="form-control" name="name" id="" [(ngModel)]="formdata.name" #name="ngModel"
+              required>
+            <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']">
               Name is required.
             </span>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Email</label>
 
-            <input type="text" class="form-control" name="email" id="" required>
-            <span class="text-danger">
+            <input type="text" class="form-control" name="email" id="" #email="ngModel" [(ngModel)]="formdata.email"
+              required>
+            <span class="text-danger" *ngIf="this.submit&&email.errors?.['required']">
               Email is required.
             </span>
           </div>
@@ -42,7 +43,7 @@
               </div>
             </div>
 
-            <input type="submit" class="btn btn-login float-right" value="Register">
+            <input type="submit" class="btn btn-login float-right" value="Register" (click)="submit=true">
           </div>
           <div class="clearfix"></div>
           <div class="form-group">

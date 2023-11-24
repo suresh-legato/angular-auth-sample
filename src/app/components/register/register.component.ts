@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.sass'
+  styleUrl: './register.component.sass',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  formdata = {
+    name: '',
+    email: '',
+  };
+  submit = false;
 
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onSubmit() {}
 }

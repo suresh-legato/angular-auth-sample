@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,12 +17,38 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   loading = false;
 
-  constructor() {}
+  constructor(private _auth: AuthService) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     this.loading = true;
     console.log(this.formData);
+    this._auth
+      .register({
+        name: this.formData.name,
+        email: this.formData.email,
+        password: this.formData.password,
+        platformId: parseInt(this.formData.platform),
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this._auth.storeToken(response.id.toString());
+        },
+        error: (data) => {
+          if (data.error.error.message == 'INVALID_EMAIL') {
+            this.errorMessage = 'Invalid Email!';
+          } else if (data.error.error.message == 'EMAIL_EXIST') {
+            this.errorMessage = 'Already Email Exist!';
+          } else {
+            this.errorMessage = 'Unknown Error!';
+          }
+        },
+      })
+      .add(() => {
+        this.loading = false;
+        console.log('Register Completed');
+      });
   }
 }

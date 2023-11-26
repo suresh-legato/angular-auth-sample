@@ -1,10 +1,72 @@
 {
   "users": [
-    {"id": 1, "name": "SureshGoogle", "email": "sureshkumar.Google@carelon.com", "password": "12345678", "moduleId": "1"},
-    {"id": 2, "name": "SureshYahoo", "email": "sureshkumar.Yahoo@carelon.com", "password": "12345678", "moduleId": "2"} 
+    {
+      "id": 1,
+      "name": "SureshGoogle",
+      "email": "sureshkumar.Google@carelon.com",
+      "password": "12345678",
+      "platformId": 1
+    },
+    {
+      "id": 2,
+      "name": "SureshYahoo",
+      "email": "sureshkumar.Yahoo@carelon.com",
+      "password": "12345678",
+      "platformId": 2
+    },
+    {
+      "name": "suresh",
+      "email": "suresh@test.com",
+      "password": "suresh123",
+      "platformId": 2,
+      "id": 3
+    },
+    {
+      "name": "Suresh2",
+      "email": "suresh2@test.com",
+      "password": "suresh12345",
+      "platformId": 3,
+      "id": 4
+    },
+    {
+      "name": "s ",
+      "email": "s@t.on",
+      "password": "s@h12345",
+      "platformId": 3,
+      "id": 5
+    },
+    {
+      "name": "s ",
+      "email": "s@t.on",
+      "password": "s@h12345",
+      "platformId": 3,
+      "id": 6
+    },
+    {
+      "name": "s1",
+      "email": "s@t.on",
+      "password": "s@h12345",
+      "platformId": 3,
+      "id": 7
+    },
+    {
+      "name": "suresh1",
+      "email": "suresh1@test.com",
+      "password": "12345678",
+      "platformId": 2,
+      "id": 8
+    }
   ],
-  "modules":[
-    {"id":1, "name": "google", "route":"www.google.com/"},
-    {"id":2, "name": "yahoo", "route":"www.yahoo.com/"}
+  "platforms": [
+    {
+      "id": 1,
+      "name": "google",
+      "route": "www.google.com/"
+    },
+    {
+      "id": 2,
+      "name": "yahoo",
+      "route": "www.yahoo.com/"
+    }
   ]
 }

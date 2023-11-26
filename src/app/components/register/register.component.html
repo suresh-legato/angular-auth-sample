@@ -7,33 +7,25 @@
         <form class="register-form" action="" #f="ngForm" novalidate (ngSubmit)="f.form.valid && onSubmit()">
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Name</label>
-            <input type="text" class="form-control" name="name" id="" [(ngModel)]="formData.name" #name="ngModel"
-              required>
+            <input type="text" class="form-control" name="name" [(ngModel)]="formData.name" #name="ngModel" required>
             <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']">
               Name is required.
             </span>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Email</label>
-
-            <input type="text" class="form-control" name="email" id="" #email="ngModel" [(ngModel)]="formData.email"
+            <input type="email" class="form-control" name="email" email #email="ngModel" [(ngModel)]="formData.email"
               required>
             <span class="text-danger" *ngIf="this.submit&&email.errors?.['required']">
               Email is required.
             </span>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" class="text-uppercase">Email</label>
-
-            <input type="text" class="form-control" name="email" id="" #email="ngModel" [(ngModel)]="formData.email"
-              required>
-            <span class="text-danger" *ngIf="this.submit&&email.errors?.['required']">
-              Email is required.
+            <span class="text-danger" *ngIf="this.submit&&email.errors?.['email']">
+              Invalid Email.
             </span>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-            <input class="form-control" type="password" name="password" id="" required #password="ngModel"
+            <input class="form-control" type="password" name="password" required #password="ngModel"
               [(ngModel)]="formData.password" minlength="8">
             <span class="text-danger" *ngIf="this.submit&&password.errors?.['required']">
               Password is required.
@@ -43,7 +35,18 @@
             </span>
           </div>
           <div class="form-group">
-
+            <label for="inputPlatform" class="text-uppercase">LLM UI Platform</label>
+            <select name="platform" class="form-control" #platform="ngModel" [(ngModel)]="formData.platform" required>
+              <option value="1">CAD</option>
+              <option value="2">CCA</option>
+              <option value="3">SIU</option>
+              <option value="4">COB</option>
+            </select>
+            <span class="text-danger" *ngIf="this.submit&&platform.errors?.['required']">
+              UI Platform is required
+            </span>
+          </div>
+          <div class="form-group">
             <span class="text-danger" *ngIf="this.errorMessage">
               <p> {{this.errorMessage}}</p>
             </span>

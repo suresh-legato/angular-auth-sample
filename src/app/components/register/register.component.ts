@@ -10,6 +10,7 @@ export class RegisterComponent implements OnInit {
     name: '',
     email: '',
     password: '',
+    platform: '',
   };
   submit = false;
   errorMessage = '';

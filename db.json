@@ -3,14 +3,14 @@
     {
       "id": 1,
       "name": "SureshGoogle",
-      "email": "sureshkumar.Google@carelon.com",
+      "email": "sureshkumar.Google@test.com",
       "password": "12345678",
       "platformId": 1
     },
     {
       "id": 2,
       "name": "SureshYahoo",
-      "email": "sureshkumar.Yahoo@carelon.com",
+      "email": "sureshkumar.Yahoo@test.com",
       "password": "12345678",
       "platformId": 2
     },
@@ -67,6 +67,21 @@
       "id": 2,
       "name": "yahoo",
       "route": "www.yahoo.com/"
+    },
+    {
+      "id": 3,
+      "name": "github",
+      "route": "www.github.com/"
+    },
+    {
+      "id": 4,
+      "name": "gitlab",
+      "route": "www.gitlab.com/"
+    },
+    {
+      "id": 5,
+      "name": "stackoverflow",
+      "route": "www.stackoverflow.com/"
     }
   ]
 }

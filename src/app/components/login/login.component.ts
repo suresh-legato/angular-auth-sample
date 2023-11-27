@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UserPlatform } from '../../model/UserPlatform';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ export class LoginComponent implements OnInit {
   formData = {
     email: '',
     password: '',
+    platformId: '',
   };
   submit = false;
   loading = false;
@@ -26,16 +28,23 @@ export class LoginComponent implements OnInit {
       .doLogin({
         email: this.formData.email,
         password: this.formData.password,
-        platformId: 1,
+        platformId: parseInt(this.formData.platformId),
       })
       .subscribe({
-        next: (data) => {
+        next: (data: UserPlatform) => {
           console.log('login success', data);
           this.auth.storeToken(data.user.id.toString());
         },
         error: (data) => {
-          console.log('login failed');
+          if (data.error.error.message != null) {
+            console.log('login failed', data);
+            this.errorMessage = data.error.error.message;
+          }
         },
+      })
+      .add(() => {
+        this.loading = false;
+        console.log('login completed');
       });
   }
 }

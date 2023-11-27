@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
     name: '',
     email: '',
     password: '',
-    platform: '',
+    platformId: '',
   };
   submit = false;
   errorMessage = '';
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
         name: this.formData.name,
         email: this.formData.email,
         password: this.formData.password,
-        platformId: parseInt(this.formData.platform),
+        platformId: parseInt(this.formData.platformId),
       })
       .subscribe({
         next: (response) => {

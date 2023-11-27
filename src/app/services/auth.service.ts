@@ -35,6 +35,14 @@ export class AuthService {
     if (!this.isAuthenticated()) {
       // redirect to login page
       this._router.navigate(['/login']);
+    } else {
+      this._router.navigate(['/dashboard']);
+    }
+  }
+
+  redirectToDashboard() {
+    if (this.isAuthenticated()) {
+      this._router.navigate(['/dashboard']);
     }
   }
 
@@ -76,7 +84,6 @@ export class AuthService {
     return this.getUser(payload).pipe(
       switchMap((userResponse) => {
         console.log('userResponse', userResponse);
-        debugger;
         return this.getPlatform(userResponse[0].platformId).pipe(
           map((platformResponse) => {
             console.log('platformResponse', platformResponse);

@@ -19,7 +19,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private _auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._auth.redirectToDashboard();
+  }
 
   onSubmit() {
     this.loading = true;
@@ -49,6 +51,7 @@ export class RegisterComponent implements OnInit {
       .add(() => {
         this.loading = false;
         console.log('Register Completed');
+        this._auth.redirectToDashboard();
       });
   }
 }

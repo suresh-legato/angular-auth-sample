@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.canAccess();
+  }
 
   onSubmit() {
     this.loading = true;
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
         next: (data: UserPlatform) => {
           console.log('login success', data);
           this.auth.storeToken(data.users[0].id.toString());
+          this.auth.redirectToDashboard();
         },
         error: (data) => {
           if (data.error.error.message != null) {

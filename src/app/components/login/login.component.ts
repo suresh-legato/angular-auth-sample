@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data: UserPlatform) => {
           console.log('login success', data);
-          this.auth.storeToken(data.user.id.toString());
+          this.auth.storeToken(data.users[0].id.toString());
         },
         error: (data) => {
           if (data.error.error.message != null) {

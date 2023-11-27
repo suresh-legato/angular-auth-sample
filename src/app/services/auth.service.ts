@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterRequest } from './requestPayload/RegisterRequest';
 import { RegisterResponse } from './responsePayload/RegisterResponse';
 import { LoginRequest } from './requestPayload/LoginRequest';
 import { LoginResponse } from './responsePayload/LoginResponse';
@@ -10,6 +9,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { User } from '../model/User';
 import { Platform } from '../model/Platform';
 import { UserPlatform } from '../model/UserPlatform';
+import { RegisterRequest } from './requestPayload/registerRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -52,8 +52,8 @@ export class AuthService {
     sessionStorage.setItem('token', token);
   }
 
-  getUser(payload: LoginRequest): Observable<User> {
-    return this.http.get<User>(
+  getUser(payload: LoginRequest): Observable<User[]> {
+    return this.http.get<User[]>(
       `http://localhost:3000/users?email=${payload.email}&password=${payload.password}`,
       {
         headers: this.getHeaders(),
@@ -61,8 +61,9 @@ export class AuthService {
     );
   }
 
-  getPlatform(platformId: number): Observable<Platform> {
-    return this.http.get<Platform>(
+  getPlatform(platformId: number): Observable<Platform[]> {
+    console.log('getPlatforms', platformId);
+    return this.http.get<Platform[]>(
       `http://localhost:3000/platforms?id=${platformId}`,
       {
         headers: this.getHeaders(),
@@ -71,13 +72,17 @@ export class AuthService {
   }
 
   doLogin(payload: LoginRequest): Observable<UserPlatform> {
+    let user: User;
     return this.getUser(payload).pipe(
-      switchMap((userResponse: User) => {
-        return this.getPlatform(userResponse.platformId).pipe(
+      switchMap((userResponse) => {
+        console.log('userResponse', userResponse);
+        debugger;
+        return this.getPlatform(userResponse[0].platformId).pipe(
           map((platformResponse) => {
+            console.log('platformResponse', platformResponse);
             return {
-              user: userResponse,
-              platform: platformResponse,
+              users: userResponse,
+              platforms: platformResponse,
             };
           })
         );

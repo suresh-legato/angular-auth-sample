@@ -2,59 +2,52 @@
   "users": [
     {
       "id": 1,
-      "name": "SureshGoogle",
-      "email": "sureshkumar.Google@test.com",
+      "name": "Suresh1",
+      "email": "suresh1@test.com",
       "password": "12345678",
       "platformId": 1
     },
     {
       "id": 2,
-      "name": "SureshYahoo",
-      "email": "sureshkumar.Yahoo@test.com",
+      "name": "Suresh2",
+      "email": "suresh2@test.com",
       "password": "12345678",
       "platformId": 2
     },
     {
-      "name": "suresh",
-      "email": "suresh@test.com",
+      "name": "suresh3",
+      "email": "suresh3@test.com",
       "password": "suresh123",
       "platformId": 2,
       "id": 3
     },
     {
-      "name": "Suresh2",
-      "email": "suresh2@test.com",
+      "name": "suresh4",
+      "email": "suresh4@test.com",
       "password": "suresh12345",
       "platformId": 3,
       "id": 4
     },
     {
-      "name": "s ",
-      "email": "s@t.on",
-      "password": "s@h12345",
+      "name": "suresh5",
+      "email": "suresh5@test.com",
+      "password": "suresh12345",
       "platformId": 3,
       "id": 5
     },
     {
-      "name": "s ",
-      "email": "s@t.on",
-      "password": "s@h12345",
+      "name": "suresh6",
+      "email": "suresh6@test.com",
+      "password": "suresh12345",
       "platformId": 3,
       "id": 6
     },
     {
-      "name": "s1",
-      "email": "s@t.on",
-      "password": "s@h12345",
+      "name": "suresh7",
+      "email": "suresh7@test.com",
+      "password": "12345678",
       "platformId": 3,
       "id": 7
-    },
-    {
-      "name": "suresh1",
-      "email": "suresh1@test.com",
-      "password": "12345678",
-      "platformId": 2,
-      "id": 8
     }
   ],
   "platforms": [

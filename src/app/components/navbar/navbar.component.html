@@ -18,7 +18,7 @@
 
       <ng-template #authenticated>
         <li class="nav-item"><a href="javascript:void(0);" routerLink="/dashboard" class="nav-link">Dashboard</a></li>
-        <li><a class="nav-link" href="javascript:void(0);">Logout</a></li>
+        <li><a class="nav-link" href="javascript:void(0);" (click)="onLogout()">Logout</a></li>
       </ng-template>
 
     </ul>

@@ -36,13 +36,11 @@ export class LoginComponent implements OnInit {
         next: (data: UserPlatform) => {
           console.log('login success', data);
           this.auth.storeToken(data.users[0].id.toString());
-          this.auth.redirectToDashboard();
+          this.auth.redirectToGoogle();
         },
-        error: (data) => {
-          if (data.error.error.message != null) {
-            console.log('login failed', data);
-            this.errorMessage = data.error.error.message;
-          }
+        error: (data: Error) => {
+          console.log('login failed', data);
+          this.errorMessage = data.message;
         },
       })
       .add(() => {

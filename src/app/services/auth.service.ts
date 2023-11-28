@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterResponse } from './responsePayload/RegisterResponse';
 import { LoginRequest } from './requestPayload/LoginRequest';
-import { LoginResponse } from './responsePayload/LoginResponse';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { User } from '../model/User';
 import { Platform } from '../model/Platform';
@@ -40,6 +39,11 @@ export class AuthService {
     }
   }
 
+  redirectToGoogle() {
+    this._router.ngOnDestroy();
+    window.location.href = 'http://www.google.com/';
+  }
+
   redirectToDashboard() {
     if (this.isAuthenticated()) {
       this._router.navigate(['/dashboard']);
@@ -69,6 +73,12 @@ export class AuthService {
     );
   }
 
+  getUserById(userId: string): Observable<User[]> {
+    return this.http.get<User[]>(`http://localhost:3000/users?id=${userId}`, {
+      headers: this.getHeaders(),
+    });
+  }
+
   getPlatform(platformId: number): Observable<Platform[]> {
     console.log('getPlatforms', platformId);
     return this.http.get<Platform[]>(
@@ -84,15 +94,23 @@ export class AuthService {
     return this.getUser(payload).pipe(
       switchMap((userResponse) => {
         console.log('userResponse', userResponse);
-        return this.getPlatform(userResponse[0].platformId).pipe(
-          map((platformResponse) => {
-            console.log('platformResponse', platformResponse);
-            return {
-              users: userResponse,
-              platforms: platformResponse,
-            };
-          })
-        );
+        if (
+          userResponse &&
+          userResponse.length &&
+          userResponse[0].platformId === payload.platformId
+        ) {
+          return this.getPlatform(userResponse[0].platformId).pipe(
+            map((platformResponse) => {
+              console.log('platformResponse', platformResponse);
+              return {
+                users: userResponse,
+                platforms: platformResponse,
+              };
+            })
+          );
+        } else {
+          throw Error('Unauthorized Platform Request');
+        }
       })
     );
   }
